@@ -1,0 +1,7 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_answer">16sp</dimen>
+    <dimen name="text_level">15sp</dimen>
+    <dimen name="text_timer">20sp</dimen>
+
+</resources>

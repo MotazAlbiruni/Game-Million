@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context=".ui.PlayScreen">
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="5"
+        android:background="@drawable/background_play">
+
+        <Button
+            android:id="@+id/btn_next_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@id/txt_quest_play"
+            android:background="@drawable/answer_background"
+            android:layout_margin="16dp"
+            android:text="Start"
+            android:textColor="@color/orange"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textAllCaps="false"/>
+        <TextView
+            android:id="@+id/txt_timer_display"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_quest_play"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="24dp"
+            android:gravity="center"
+            android:background="@drawable/timer_background"
+            android:text="30"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_timer" />
+
+        <TextView
+            android:id="@+id/txt_quest_play"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/txt_ans_a"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:padding="4dp"
+            android:background="@drawable/quest_background"
+            android:text="TextView_question"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_answer" />
+
+        <TextView
+            android:id="@+id/txt_ans_a"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/txt_ans_c"
+            android:layout_alignEnd="@id/txt_quest_play"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="8dp"
+            android:layout_toEndOf="@id/txt_timer_display"
+            android:gravity="center"
+            android:padding="4dp"
+            android:background="@drawable/answer_background"
+            android:text="TextView_A"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_answer" />
+
+        <TextView
+            android:id="@+id/txt_ans_b"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/txt_ans_d"
+            android:layout_alignStart="@id/txt_quest_play"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:layout_toStartOf="@id/txt_timer_display"
+            android:gravity="center"
+            android:padding="4dp"
+            android:background="@drawable/answer_background"
+            android:text="TextView_B"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_answer" />
+
+        <TextView
+            android:id="@+id/txt_ans_c"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@id/txt_ans_a"
+            android:layout_alignTop="@+id/txt_ans_d"
+            android:layout_alignEnd="@id/txt_quest_play"
+            android:layout_alignBottom="@+id/txt_ans_d"
+            android:gravity="center"
+            android:padding="4dp"
+            android:background="@drawable/answer_background"
+            android:text="TextView_C"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_answer" />
+
+        <TextView
+            android:id="@+id/txt_ans_d"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@id/txt_quest_play"
+            android:layout_alignEnd="@id/txt_ans_b"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="56dp"
+            android:gravity="center"
+            android:padding="4dp"
+            android:background="@drawable/answer_background"
+            android:text="TextView_D"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_answer" />
+
+        <TextView
+            android:id="@+id/txt_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="56dp"
+            android:gravity="center"
+            android:layout_alignStart="@id/txt_ans_b"
+            android:layout_alignEnd="@id/txt_ans_c"
+            android:layout_alignTop="@id/txt_quest_play"
+            android:background="@drawable/answer_background"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:text="hfhfhf"
+            android:visibility="invisible"
+            />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="#021942"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtLevel_15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="32dp"
+            android:text="$ 1000000"
+            android:textColor="@color/orange"
+            android:textSize="@dimen/text_level"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/txtLevel_14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="$ 500000"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_level"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/txtLevel_13"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="$ 250000"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_level"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/txtLevel_12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="$ 100000"
+            android:textColor="@color/orange"
+            android:textSize="@dimen/text_level"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/txtLevel_11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="$ 50000"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_level"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/txtLevel_10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="$ 25000"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_level"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/txtLevel_9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="$ 15000"
+            android:textColor="@color/orange"
+            android:textSize="@dimen/text_level"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/txtLevel_8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="$ 12000"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_level"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/txtLevel_7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="$ 10000"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_level"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/txtLevel_6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="$ 7000"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_level"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/txtLevel_5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="$ 5000"
+            android:textColor="@color/orange"
+            android:textSize="@dimen/text_level"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/txtLevel_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="$ 3000"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_level"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/txtLevel_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="$ 2000"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_level"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/txtLevel_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="$ 1000"
+            android:textColor="@color/orange"
+            android:textSize="@dimen/text_level"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/txtLevel_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="$ 500"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_level"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

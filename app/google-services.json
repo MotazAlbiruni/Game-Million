@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "605189522725",
+    "project_id": "wantmillion-bc698",
+    "storage_bucket": "wantmillion-bc698.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:605189522725:android:9d48245fac224d7deac6cc",
+        "android_client_info": {
+          "package_name": "com.motazalbiruni.milliongame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "605189522725-r8sp4v657km3t7lfep5geiodabmfek30.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwScVm3tNup_NHDFleA5T0uwTtYI4fUlU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "605189522725-r8sp4v657km3t7lfep5geiodabmfek30.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
