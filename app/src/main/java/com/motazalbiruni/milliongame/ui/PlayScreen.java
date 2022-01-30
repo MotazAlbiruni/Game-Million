@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -40,6 +41,12 @@ public class PlayScreen extends AppCompatActivity {
     GameDatabase gameDatabase;
     UserTools tools;
     Observable<Long> observable;
+    //Declare timer
+    CountDownTimer cTimer = null;
+    CountDownTimer cTimerB = null;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +77,9 @@ public class PlayScreen extends AppCompatActivity {
         txt_level14 = findViewById(R.id.txtLevel_14);
         txt_level15 = findViewById(R.id.txtLevel_15);
 
+
+
+
         btn_next_level = findViewById(R.id.btn_next_level);
         tools = new UserTools();
         gameDatabase = GameDatabase.getInstance(this);
@@ -85,6 +95,7 @@ public class PlayScreen extends AppCompatActivity {
             public void onClick(View v) {
                 if (UserTools.isBtnClicked()) {
                     txtAnswerA.setBackground(getResources().getDrawable(R.drawable.answer_check_background));
+                    cancelTimer();
                     observable.subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe(new Observer<Long>() {
@@ -118,6 +129,7 @@ public class PlayScreen extends AppCompatActivity {
             public void onClick(View v) {
                 if (UserTools.isBtnClicked()) {
                     txtAnswerB.setBackground(getResources().getDrawable(R.drawable.answer_check_background));
+                    cancelTimer();
                     observable.subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe(new Observer<Long>() {
@@ -151,6 +163,7 @@ public class PlayScreen extends AppCompatActivity {
             public void onClick(View v) {
                 if (UserTools.isBtnClicked()) {
                     txtAnswerC.setBackground(getResources().getDrawable(R.drawable.answer_check_background));
+                    cancelTimer();
                     observable.subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe(new Observer<Long>() {
@@ -184,6 +197,7 @@ public class PlayScreen extends AppCompatActivity {
             public void onClick(View v) {
                 if (UserTools.isBtnClicked()) {
                     txtAnswerD.setBackground(getResources().getDrawable(R.drawable.answer_check_background));
+                    cancelTimer();
                     observable.subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe(new Observer<Long>() {
@@ -221,33 +235,7 @@ public class PlayScreen extends AppCompatActivity {
                         , gameEntity.getAnswer_c(), gameEntity.getAnswer_d()};
                 playQuest(new Question(gameEntity.getQuestion(), answers));
                 btn_next_level.setVisibility(View.INVISIBLE);
-                observable.subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(new Observer<Long>() {
-                            @Override
-                            public void onSubscribe(@NonNull Disposable d) {
-
-                            }
-
-                            @Override
-                            public void onNext(@NonNull Long aLong) {
-                                if (aLong < 60) {
-                                    txt_timer.setText(60 - aLong + "");
-                                } else {
-                                    endPlayGame();
-                                }//end if
-                            }
-
-                            @Override
-                            public void onError(@NonNull Throwable e) {
-
-                            }
-
-                            @Override
-                            public void onComplete() {
-
-                            }
-                        });
+                startTimer(60);
             }
         });
         
@@ -290,7 +278,32 @@ public class PlayScreen extends AppCompatActivity {
             TextView[] textViewsCorrect = new TextView[]{txtAnswerA, txtAnswerB, txtAnswerC, txtAnswerD};
             textViewsCorrect[UserTools.getAnswerCorrect()].setBackground(getResources().getDrawable(R.drawable.answer_correct_background));
 
-            endPlayGame();
+            observable.subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Observer<Long>() {
+                        @Override
+                        public void onSubscribe(@NonNull Disposable d) {
+
+                        }
+
+                        @Override
+                        public void onNext(@NonNull Long aLong) {
+                            if (aLong == 3) {
+                                endPlayGame();
+                            }
+                        }
+
+                        @Override
+                        public void onError(@NonNull Throwable e) {
+
+                        }
+
+                        @Override
+                        public void onComplete() {
+
+                        }
+                    });
+
         }//end if
 
         if (i == UserTools.getAnswerCorrect()) {
@@ -301,6 +314,7 @@ public class PlayScreen extends AppCompatActivity {
             upLevel(count);
             if (count == 14) {
                 UserTools.setIsGameOver(true);
+                startTimer(10);
                 endPlayGame();
             } else {
                 btn_next_level.setVisibility(View.VISIBLE);
@@ -405,4 +419,42 @@ public class PlayScreen extends AppCompatActivity {
         txt_result.setText("انتهت العبة وقد حصلت على عدد نقاط : " + money);
 
     }//end endPlayGame()
+
+    //start timer function
+    private void startTimer(int mf){
+        if (mf>20){
+            cTimer = new CountDownTimer(mf*1000, 1000) {
+                public void onTick(long millisUntilFinished) {
+
+                    txt_timer.setText(millisUntilFinished/1000+ "");
+                }
+                public void onFinish() {
+                    endPlayGame();
+                }
+            };
+            cTimer.start();
+        }else {
+            cTimerB = new CountDownTimer(mf*1000, 1000) {
+                public void onTick(long millisUntilFinished) {
+                }
+                public void onFinish() {
+                }
+            };
+            cTimerB.start();
+        }
+
+    }//end startTimer()
+
+
+    //cancel timer
+    private void cancelTimer() {
+
+        if (cTimer != null)
+            cTimer.cancel();
+
+        if (cTimerB != null)
+            cTimerB.cancel();
+
+    }//end cancelTimer()
+
 }//end class
